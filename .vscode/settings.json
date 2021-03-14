@@ -1,0 +1,6 @@
+{
+  "python.pythonPath": "/home/damian_koper/.virtualenvs/myocardial-infarction-knn-YsotzBlM/bin/python",
+  "spellright.language": ["Polish", "en_US"],
+  "spellright.documentTypes": ["markdown", "plaintext", "latex"],
+  "latex-workshop.latex.outDir": "../out"
+}
