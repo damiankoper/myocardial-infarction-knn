@@ -12,9 +12,19 @@
 % to display URLs in blue roman font according to Springer's eBook style:
 % \renewcommand\UrlFont{\color{blue}\rmfamily}
 \usepackage{csvsimple}
-
+\usepackage{booktabs}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+\usepackage{wrapfig}
 \begin{document}
-%
+\renewcommand*{\figurename}{Rysunek}
+\renewcommand*{\tablename}{Tabela}
+\renewcommand*{\keywordname}{{\bf Słowa kluczowe:}}
+\renewcommand*{\abstractname}{{\bf Abstrakt:}}
 \title{Contribution Title\thanks{Supported by organization x.}}
 %
 %\titlerunning{Abbreviated paper title}
@@ -47,7 +57,7 @@
 %
 %
 %
-\input{parts/01-section}
+\input{parts/10-problem}
 %
 % ---- Bibliography ----
 %

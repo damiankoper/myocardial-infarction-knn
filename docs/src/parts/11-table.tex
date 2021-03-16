@@ -1,0 +1,203 @@
+\setlength{\tabcolsep}{5pt}
+\tabulinesep=2.5pt
+
+\begin{longtabu}{rX[l]ll}
+    \caption{Opis zbioru cech danych uczących i treningowych klasyfikatora.}\label{tab:cechy}                                \\
+    \toprule
+    \textbf{L.p.} & \textbf{Cecha}                                        & \textbf{Charakter}   & \textbf{Wartości}         \\
+    \endfirsthead
+    \toprule
+    \textbf{L.p.} & \textbf{Cecha}                                        & \textbf{Charakter}   & \textbf{Wartości}         \\
+    \midrule
+    \endhead
+    \midrule
+    & \multicolumn{3}{l}{\textit{Ogólne}}                                                                      \\*
+    \cmidrule(r){2-4}
+
+    1             & wiek                                                  & dyskretny            & liczby naturalne          \\
+    2             & płeć                                                  & dychotomiczny        & 0 - K, 1 - M              \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Ból}}                                                                         \\*
+    \cmidrule(r){2-4}
+    3             & miejsce                                               & kategoryczny         & tabela \ref{tab:cecha_3}  \\
+    4             & promieniowanie w klatce piersiowej                    & kategoryczny         & tabela \ref{tab:cecha_4}  \\
+    5             & charakter                                             & kategoryczny         & tabela \ref{tab:cecha_5}  \\
+    6             & początek występowania                                 & kategoryczny         & tabela \ref{tab:cecha_6}  \\
+    7             & liczba godzin od rozpoczęcia                          & dyskretny            & liczby naturalne          \\
+    8             & długość trwania poprzedniego                          & kategoryczny         & tabela \ref{tab:cecha_8}  \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Powiązane objawy}}                                                            \\*
+    \cmidrule(r){2-4}
+    9             & nudności                                              & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    10            & potliwość                                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    11            & kołatanie serca                                       & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    12            & duszności                                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    13            & zawroty głowy/omdlenia                                & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    14            & odbijanie                                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Czynniki paliatywne}}                                                         \\*
+    \cmidrule(r){2-4}
+    15            & czynniki paliatywne                                   & kategoryczny         & tabela \ref{tab:cecha_15} \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Historia podobnego bólu}}                                                     \\*
+    \cmidrule(r){2-4}
+    16            & wcześniejszy, tego samego rodzaju w~klatce piersiowej & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    17            & konsultacja lekarska przy wcześniejszym bólu          & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    18            & wcześniejszy, powiązany z~sercem                      & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    19            & wcześniejszy, spowodowany zawałem                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    20            & wcześniejszy, spowodowany chorobą niedokrwienną serca & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Historia medyczna}}                                                           \\*
+    \cmidrule(r){2-4}
+    21            & wcześniejszy zawał serca                              & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    22            & wcześniejsza choroba niedokrwienna serca              & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    23            & wcześniejszy nietypowy ból w~klatce piersiowej        & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    24            & niewydolność serca                                    & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    25            & choroba naczyń obwodowych                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    26            & przepuklina rozwory przełykowego                      & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    27            & nadciśnienie tętnicze                                 & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    28            & cukrzyca                                              & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    29            & palacz                                                & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Obecne użycie leków}}                                                         \\*
+    \cmidrule(r){2-4}
+    30            & diuretyki                                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    31            & azotany                                               & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    32            & beta-blokery                                          & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    33            & digoksyna                                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    34            & niesteroidowe leki przeciwzapalne                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    35            & leki zobojętniające kwas żołądkowy, blokery~H2        & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Badanie fizyczne}}                                                            \\*
+    \cmidrule(r){2-4}
+    36            & skurczowe ciśnienie tętnicze                          & dyskretny            & liczby naturalne          \\
+    37            & rozkurczowe ciśnienie tętnicze                        & dyskretny            & liczby naturalne          \\
+    38            & tętno                                                 & dyskretny            & liczby naturalne          \\
+    39            & szybkość oddychania                                   & dyskretny            & liczby naturalne          \\
+    40            & rzężenia                                              & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    41            & sinica                                                & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    42            & bladość                                               & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    43            & szmery skurczowe                                      & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    44            & szmery rozkurczowe                                    & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    45            & obrzęk                                                & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    46            & trzeci ton serca                                      & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    47            & czwarty ton serca                                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    48            & tkliwość ściany klatki piersiowej                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    49            & potliwość                                             & 0 - brak, 1 - obecny                             \\
+    \midrule
+    & \multicolumn{3}{l}{\textit{Badanie EKG}}                                                                 \\*
+    \cmidrule(r){2-4}
+    50            & nowy załamek Q                                        & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    51            & jakikolwiek załamek~Q                                 & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    52            & nowe uniesienie odcinka~ST                            & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    53            & jakiekolwiek uniesienie odcinka~ST                    & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    54            & nowe obniżenie odcinka~ST                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    55            & jakiekolwiek obniżenie odcinka~ST                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    56            & nowy odwrócony załamek~T                              & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    57            & jakikolwiek odwrócony załamek~T                       & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    58            & nowe zaburzenie przewodnictwa śródkomorowego          & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    59            & jakiekolwiek zaburzenie przewodnictwa śródkomorowego  & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    \bottomrule
+\end{longtabu}
+\begin{multicols}{2}
+    \begin{wraptable}{c}{\linewidth}
+        \caption{Opis wartości cechy \textit{miejsce~bólu}.}\label{tab:cecha_3}
+        \begin{tabu}{rX[l]}
+            \toprule
+            \textbf{War.} & \textbf{Znaczenie}          \\
+            \midrule
+
+            1             & zamostkowy                  \\
+            2             & lewa strona, w okol. serca  \\
+            3             & prawa strona na wys. serca  \\
+            4             & lewy bok klatki piersiowej  \\
+            5             & prawy bok klatki piersiowej \\
+            6             & brzuch                      \\
+            7             & plecy                       \\
+            8             & inne                        \\
+            \bottomrule
+        \end{tabu}
+    \end{wraptable}
+
+    \begin{wraptable}{c}{\linewidth}
+        \caption{Opis wartości cechy \textit{promieniowanie bólu w klatce piersiowej}.}\label{tab:cecha_4}
+        \begin{tabu}{rX[l]}
+            \toprule
+            \textbf{War.} & \textbf{Znaczenie} \\
+            \midrule
+
+            1             & szyja              \\
+            2             & szczęka            \\
+            3             & lewe ramię         \\
+            4             & lewa ręka          \\
+            5             & prawe ramię        \\
+            6             & plecy              \\
+            7             & brzuch             \\
+            8             & inne               \\
+            \bottomrule
+        \end{tabu}
+    \end{wraptable}
+
+    \begin{wraptable}{c}{\linewidth}
+        \caption{Opis wartości cechy \textit{charakter bólu}.}\label{tab:cecha_5}
+        \begin{tabu}{rX[l]}
+            \toprule
+            \textbf{War.} & \textbf{Znaczenie} \\
+            \midrule
+
+            1             & szyja              \\
+            2             & szczęka            \\
+            3             & lewe ramię         \\
+            4             & lewa ręka          \\
+            5             & prawe ramię        \\
+            6             & plecy              \\
+            7             & brzuch             \\
+            8             & inne               \\
+            \bottomrule
+        \end{tabu}
+    \end{wraptable}
+
+    \begin{wraptable}{c}{\linewidth}
+        \caption{Opis wartości cechy \textit{początek występowania bólu}.}\label{tab:cecha_6}
+        \begin{tabu}{rX[l]}
+            \toprule
+            \textbf{War.} & \textbf{Znaczenie} \\
+            \midrule
+            1             & podczas wysiłku    \\
+            2             & w spoczynku        \\
+            3             & podczas snu        \\
+            \bottomrule
+        \end{tabu}
+    \end{wraptable}
+    \begin{wraptable}{c}{\linewidth}
+        \caption{Opis wartości cechy \textit{długość trwania ostatniego bólu}.}\label{tab:cecha_8}
+        \begin{tabu}{rX[l]}
+            \toprule
+            \textbf{War.} & \textbf{Znaczenie} \\
+            \midrule
+            1             & poniżej 5 min      \\
+            2             & 5 - 30 min         \\
+            3             & 30 - 60 min        \\
+            4             & 1 - 6 godz.        \\
+            5             & 6 - 12 godz.       \\
+            6             & powyżej 12 godz.   \\
+            \bottomrule
+        \end{tabu}
+    \end{wraptable}
+    \begin{wraptable}{c}{\linewidth}
+        \caption{Opis wartości cechy \textit{czynniki paliatywne}.}\label{tab:cecha_15}
+        \begin{tabu}{rX[l]}
+            \toprule
+            \textbf{War.} & \textbf{Znaczenie}                 \\
+            \midrule
+            1             & brak                               \\
+            2             & nitrogliceryna w ciągu 5 min       \\
+            3             & nitrogliceryna po upływie 5 min    \\
+            4             & leki zobojętniające kwas żołądkowy \\
+            5             & znieczulenie poza morfiną          \\
+            6             & morfina                            \\
+            \bottomrule
+        \end{tabu}
+    \end{wraptable}
+
+\end{multicols}
