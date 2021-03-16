@@ -2,7 +2,8 @@ from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
-print(os.getcwd())
+os.chdir(os.path.dirname(__file__))
+
 IMG_DIR = "../docs/src/img".replace('/', os.sep)
 DATA_DIR = "../docs/src/data".replace('/', os.sep)
 
@@ -21,7 +22,7 @@ ax.plot([1, 2, 3, 4], [1, 4, 2, 3])
 fig.savefig(os.path.join(IMG_DIR, 'test.png'))
 
 # csv test
-test_data = pd.DataFrame([[1, 2], [3, 4]])
+test_data = pd.DataFrame([[1, 22], [3, 4]])
 test_data.to_csv(
     os.path.join(DATA_DIR, 'test.csv'),
     index=False,
