@@ -807,7 +807,7 @@ to0pt{\kern0.55\wd0\vrule height0.45\ht0\hss}\box0}}}}
         \@setminipage
 }
 \def\fps@table{htbp}
-\def\fnum@table{\tablename~\thetable}
+\def\fnum@table{\textbf{\tablename~\thetable}}
 \renewenvironment{table}
                {\setlength\abovecaptionskip{0\p@}%
                 \setlength\belowcaptionskip{10\p@}%

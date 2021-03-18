@@ -1,5 +1,6 @@
 \setlength{\tabcolsep}{5pt}
 \tabulinesep=2.5pt
+\LTcapwidth=\textwidth
 
 \begin{longtabu}{rX[l]ll}
     \caption{Opis zbioru cech danych uczących i treningowych klasyfikatora.}\label{tab:cechy}                                \\
@@ -38,10 +39,9 @@
     & \multicolumn{3}{l}{\textit{Czynniki paliatywne}}                                                         \\*
     \cmidrule(r){2-4}
     15            & czynniki paliatywne                                   & kategoryczny         & tabela \ref{tab:cecha_15} \\
-    \midrule
-    & \multicolumn{3}{l}{\textit{Historia podobnego bólu}}                                                     \\*
-    \cmidrule(r){2-4}
-    16            & wcześniejszy, tego samego rodzaju w~klatce piersiowej & dychotomiczny        & 0 - brak, 1 - obecny      \\
+    \midrule \pagebreak
+    & \multicolumn{3}{l}{\textit{Historia podobnego bólu}}                                                     \\
+    \cmidrule(r){2-4}\nopagebreak  16            & wcześniejszy, tego samego rodzaju w~klatce piersiowej & dychotomiczny        & 0 - brak, 1 - obecny      \\
     17            & konsultacja lekarska przy wcześniejszym bólu          & dychotomiczny        & 0 - brak, 1 - obecny      \\
     18            & wcześniejszy, powiązany z~sercem                      & dychotomiczny        & 0 - brak, 1 - obecny      \\
     19            & wcześniejszy, spowodowany zawałem                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
@@ -68,6 +68,7 @@
     34            & niesteroidowe leki przeciwzapalne                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
     35            & leki zobojętniające kwas żołądkowy, blokery~H2        & dychotomiczny        & 0 - brak, 1 - obecny      \\
     \midrule
+    \pagebreak
     & \multicolumn{3}{l}{\textit{Badanie fizyczne}}                                                            \\*
     \cmidrule(r){2-4}
     36            & skurczowe ciśnienie tętnicze                          & dyskretny            & liczby naturalne          \\
@@ -99,105 +100,104 @@
     59            & jakiekolwiek zaburzenie przewodnictwa śródkomorowego  & dychotomiczny        & 0 - brak, 1 - obecny      \\
     \bottomrule
 \end{longtabu}
-\begin{multicols}{2}
-    \begin{wraptable}{c}{\linewidth}
-        \caption{Opis wartości cechy \textit{miejsce~bólu}.}\label{tab:cecha_3}
-        \begin{tabu}{rX[l]}
-            \toprule
-            \textbf{War.} & \textbf{Znaczenie}          \\
-            \midrule
 
-            1             & zamostkowy                  \\
-            2             & lewa strona, w okol. serca  \\
-            3             & prawa strona na wys. serca  \\
-            4             & lewy bok klatki piersiowej  \\
-            5             & prawy bok klatki piersiowej \\
-            6             & brzuch                      \\
-            7             & plecy                       \\
-            8             & inne                        \\
-            \bottomrule
-        \end{tabu}
-    \end{wraptable}
+\begin{table}
+    \caption{Opis wartości cechy \textit{miejsce~bólu}.}\label{tab:cecha_3}
+    \begin{tabu}{rX[l]}
+        \toprule
+        \textbf{Wartość} & \textbf{Znaczenie}          \\
+        \midrule
 
-    \begin{wraptable}{c}{\linewidth}
-        \caption{Opis wartości cechy \textit{promieniowanie bólu w klatce piersiowej}.}\label{tab:cecha_4}
-        \begin{tabu}{rX[l]}
-            \toprule
-            \textbf{War.} & \textbf{Znaczenie} \\
-            \midrule
+        1                & zamostkowy                  \\
+        2                & lewa strona, w okol. serca  \\
+        3                & prawa strona na wys. serca  \\
+        4                & lewy bok klatki piersiowej  \\
+        5                & prawy bok klatki piersiowej \\
+        6                & brzuch                      \\
+        7                & plecy                       \\
+        8                & inne                        \\
+        \bottomrule
+    \end{tabu}
+\end{table}
 
-            1             & szyja              \\
-            2             & szczęka            \\
-            3             & lewe ramię         \\
-            4             & lewa ręka          \\
-            5             & prawe ramię        \\
-            6             & plecy              \\
-            7             & brzuch             \\
-            8             & inne               \\
-            \bottomrule
-        \end{tabu}
-    \end{wraptable}
+\begin{table}
+    \caption{Opis wartości cechy \textit{promieniowanie bólu w klatce piersiowej}.}\label{tab:cecha_4}
+    \begin{tabu}{rX[l]}
+        \toprule
+        \textbf{Wartość} & \textbf{Znaczenie} \\
+        \midrule
 
-    \begin{wraptable}{c}{\linewidth}
-        \caption{Opis wartości cechy \textit{charakter bólu}.}\label{tab:cecha_5}
-        \begin{tabu}{rX[l]}
-            \toprule
-            \textbf{War.} & \textbf{Znaczenie} \\
-            \midrule
+        1                & szyja              \\
+        2                & szczęka            \\
+        3                & lewe ramię         \\
+        4                & lewa ręka          \\
+        5                & prawe ramię        \\
+        6                & plecy              \\
+        7                & brzuch             \\
+        8                & inne               \\
+        \bottomrule
+    \end{tabu}
+\end{table}
 
-            1             & szyja              \\
-            2             & szczęka            \\
-            3             & lewe ramię         \\
-            4             & lewa ręka          \\
-            5             & prawe ramię        \\
-            6             & plecy              \\
-            7             & brzuch             \\
-            8             & inne               \\
-            \bottomrule
-        \end{tabu}
-    \end{wraptable}
+\begin{table}
+    \caption{Opis wartości cechy \textit{charakter bólu}.}\label{tab:cecha_5}
+    \begin{tabu}{rX[l]}
+        \toprule
+        \textbf{Wartość} & \textbf{Znaczenie} \\
+        \midrule
 
-    \begin{wraptable}{c}{\linewidth}
-        \caption{Opis wartości cechy \textit{początek występowania bólu}.}\label{tab:cecha_6}
-        \begin{tabu}{rX[l]}
-            \toprule
-            \textbf{War.} & \textbf{Znaczenie} \\
-            \midrule
-            1             & podczas wysiłku    \\
-            2             & w spoczynku        \\
-            3             & podczas snu        \\
-            \bottomrule
-        \end{tabu}
-    \end{wraptable}
-    \begin{wraptable}{c}{\linewidth}
-        \caption{Opis wartości cechy \textit{długość trwania ostatniego bólu}.}\label{tab:cecha_8}
-        \begin{tabu}{rX[l]}
-            \toprule
-            \textbf{War.} & \textbf{Znaczenie} \\
-            \midrule
-            1             & poniżej 5 min      \\
-            2             & 5 - 30 min         \\
-            3             & 30 - 60 min        \\
-            4             & 1 - 6 godz.        \\
-            5             & 6 - 12 godz.       \\
-            6             & powyżej 12 godz.   \\
-            \bottomrule
-        \end{tabu}
-    \end{wraptable}
-    \begin{wraptable}{c}{\linewidth}
-        \caption{Opis wartości cechy \textit{czynniki paliatywne}.}\label{tab:cecha_15}
-        \begin{tabu}{rX[l]}
-            \toprule
-            \textbf{War.} & \textbf{Znaczenie}                 \\
-            \midrule
-            1             & brak                               \\
-            2             & nitrogliceryna w ciągu 5 min       \\
-            3             & nitrogliceryna po upływie 5 min    \\
-            4             & leki zobojętniające kwas żołądkowy \\
-            5             & znieczulenie poza morfiną          \\
-            6             & morfina                            \\
-            \bottomrule
-        \end{tabu}
-    \end{wraptable}
+        1                & szyja              \\
+        2                & szczęka            \\
+        3                & lewe ramię         \\
+        4                & lewa ręka          \\
+        5                & prawe ramię        \\
+        6                & plecy              \\
+        7                & brzuch             \\
+        8                & inne               \\
+        \bottomrule
+    \end{tabu}
+\end{table}
 
-\end{multicols}
+\begin{table}
+    \caption{Opis wartości cechy \textit{początek występowania bólu}.}\label{tab:cecha_6}
+    \begin{tabu}{rX[l]}
+        \toprule
+        \textbf{Wartość} & \textbf{Znaczenie} \\
+        \midrule
+        1                & podczas wysiłku    \\
+        2                & w spoczynku        \\
+        3                & podczas snu        \\
+        \bottomrule
+    \end{tabu}
+\end{table}
+\begin{table}
+    \caption{Opis wartości cechy \textit{długość trwania ostatniego bólu}.}\label{tab:cecha_8}
+    \begin{tabu}{rX[l]}
+        \toprule
+        \textbf{Wartość} & \textbf{Znaczenie} \\
+        \midrule
+        1                & poniżej 5 min      \\
+        2                & 5 - 30 min         \\
+        3                & 30 - 60 min        \\
+        4                & 1 - 6 godz.        \\
+        5                & 6 - 12 godz.       \\
+        6                & powyżej 12 godz.   \\
+        \bottomrule
+    \end{tabu}
+\end{table}
+\begin{table}
+    \caption{Opis wartości cechy \textit{czynniki paliatywne}.}\label{tab:cecha_15}
+    \begin{tabu}{rX[l]}
+        \toprule
+        \textbf{Wartość} & \textbf{Znaczenie}                 \\
+        \midrule
+        1                & brak                               \\
+        2                & nitrogliceryna w ciągu 5 min       \\
+        3                & nitrogliceryna po upływie 5 min    \\
+        4                & leki zobojętniające kwas żołądkowy \\
+        5                & znieczulenie poza morfiną          \\
+        6                & morfina                            \\
+        \bottomrule
+    \end{tabu}
+\end{table}
+

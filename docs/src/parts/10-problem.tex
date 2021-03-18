@@ -1,4 +1,29 @@
-\section{Wstęp}
+\section{Wprowadzenie}
+Cel projektu stanowi stworzenie programu do komputerowego wspomagania diagnozowania zawałów z wykorzystaniem algorytmu kNN.
 
+\section{Problem medyczny jako zadania klasyfikacji}
+Zadanie klasyfikacji w projekcie polega na tym, aby wspomóc rozpoznawanie stanów zwałowych wśród pacjentów na podstawie danych zgromadzonych podczas badań na ludziach, u których potwierdzono jedną z następujących diagnoz:
+
+\begin{itemize}
+    \item ból nie pochodzący z serca,
+    \item dusznica bolesna – dławica piersiowa,
+    \item dusznica Prinzmetala – dławica naczynioskurczowa,
+    \item pełnościenny zawał serca,
+    \item podwsierdziowy zawał serca.
+\end{itemize}
+
+\noindent
+W zadaniu klasyfikacji wyróżnić można pewne pojęcia, w celu lepszego jego opisu:
+
+\begin{itemize}
+    \item Klasa – pewna podprzestrzeń wartości zestawu danych, która w uczeniu nadzorowanym posiada swoją etykietę. Problem klasyfikacji jest odpowiedzią na pytania do jakiej klasy przyporządkować nowo napotkany zestaw wartości. Z punktu widzenia medycznego jest to zakwalifikowanie pacjenta jako zdrowego lub chorego z wyróżnieniem chorób na podstawie liczebności klas w~danych uczących.
+
+    \item Cecha – właściwość, która opisuje daną klasę. W medycynie jest to między innymi płeć, wiek, samopoczucie, czy też wynik badań.
+\end{itemize}
+
+Wynik zadania klasyfikacji to przyporządkowanie każdego z pacjentów do jednej z wymienionych klas. Jakość klasyfikacji za pomocą klasyfikatora $k$ najbliższych sąsiadów została zbadana w zależności od liczby cech uwzględnionych podczas uczenia, a także zastosowanej metryki odległości.
+
+\subsection{Opis cech}
+Dane uczące to pięć plików tekstowych, przy czym każdy z nich odpowiada osobnej klasie i zawiera opis tego samego zestawu cech. Zbiór danych zawiera 5 klas, 59 cech oraz 901 rekordów. Opis poszczególnych cech z podziałem na ich charakter i możliwe do przyjęcia wartości zawiera tabela \ref{tab:cechy}.
 
 \input{./parts/11-table}

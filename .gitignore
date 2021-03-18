@@ -131,6 +131,7 @@ dmypy.json
 
 # tex docs
 docs/out/*
+!docs/out/*.pdf
 !docs/out/.gitkeep
 
 docs/src/img/*

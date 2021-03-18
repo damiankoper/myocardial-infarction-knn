@@ -1,13 +1,7 @@
 {
   "python.pythonPath": "/home/damian_koper/.virtualenvs/myocardial-infarction-knn-YsotzBlM/bin/python",
-  "spellright.language": [
-    "en_US",
-    "pl_PL"
-  ],
-  "spellright.documentTypes": [
-    "markdown",
-    "plaintext",
-    "latex"
-  ],
-  "latex-workshop.latex.outDir": "../out"
+  "spellright.language": ["en_US", "pl_PL"],
+  "spellright.documentTypes": ["markdown", "plaintext", "latex"],
+  "latex-workshop.latex.outDir": "../out",
+  "editor.wordWrap": "wordWrapColumn"
 }
