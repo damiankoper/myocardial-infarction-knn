@@ -1,0 +1,55 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[runningheads]{llncs}
+%
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+%
+\institute{Politechnika Wrocławska\\Wydział Elektroniki\\Informatyka Techniczna\\Zastosowanie Informatyki w Medycynie - Projekt}
+\title{Komputerowe wspomaganie diagnozowania zawałów z wykorzystaniem algorytmu kNN}
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{Karolina Działek 242 040 \and
+Damian Koper 241 292}
+
+\maketitle
+%
+%
+\section{Wprowadzenie}
+Cel projektu stanowi stworzenie programu do komputerowego wspomagania diagnozowania zawałów z wykorzystaniem algorytmu kNN. Dane wejściowe to pięć plików tekstowych, przy czym każdy z nich odpowiada osobnej klasie. Zbiór danych zawiera 5 klas, 59 cech oraz 901 rekordów. Wykorzystywanym językiem programowania jest Python, ponieważ wykorzystywaną biblioteką do uczenia maszynowego jest scikit-learn.
+
+\section{Przedstawienie problemu medycznego jako zadania klasyfikacji}
+W klasyfikacji nadzorowanej wzorce posiadają pewne składowe, które są istotne, aby prawidłowo przeprowadzić ten proces.
+
+\begin{itemize}
+\item Klasa – wzorzec jest przyporządkowany do pewnej klasy (uczenie nadzorowane). Problem klasyfikacji jest odpowiedzią na pytania do jakiej klasy przyporządkować nowo napotkany obiekt. Z punktu widzenia medycznego jest to zakwalifikowanie pacjenta jako zdrowego lub chorego.
+
+\item Cecha – właściwość, która opisuje dany wzorzec. W medycynie jest to płeć, wiek, czy też wynik badań.
+\end{itemize}
+
+Zadanie klasyfikacji w projekcie polega na tym, aby wspomóc rozpoznawanie stanów zwałowych wśród pacjentów na podstawie danych zgromadzonych podczas badań na ludziach, u których potwierdzono jedną z następujących diagnoz:
+
+\begin{itemize}
+\item ból nie pochodzący z serca,
+\item dusznica bolesna – dławica piersiowa,
+\item dusznica Prinzmetala – dławica naczynioskurczowa,
+\item pełnościenny zawał serca,
+\item podwsierdziowy zawał serca.
+\end{itemize}
+
+Wynik zadania klasyfikacji to przyporządkowanie każdego z pacjentów do jednej z wymienionych klas. Jakość klasyfikacji zostanie zbadana za pomocą algorytmu k najbliższych sąsiadów, w zależności od liczby cech uwzględnionych podczas uczenia, a także zastosowanej metryki odległości.
+
+\end{document}
