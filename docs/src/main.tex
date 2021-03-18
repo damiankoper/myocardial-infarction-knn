@@ -25,38 +25,75 @@
 \renewcommand*{\tablename}{Tabela}
 \renewcommand*{\keywordname}{{\bf Słowa kluczowe:}}
 \renewcommand*{\abstractname}{{\bf Abstrakt:}}
-\title{Contribution Title\thanks{Supported by organization x.}}
-%
-%\titlerunning{Abbreviated paper title}
-% If the paper title is too long for the running head, you can set
-% an abbreviated paper title here
-%
-\author{First Author\inst{1}\orcidID{241292} \and
-    Second Author\inst{2,3}\orcidID{1111-2222-3333-4444} \and
-    Third Author\inst{3}\orcidID{2222--3333-4444-5555}}
-%
-\authorrunning{F. Author et al.}
-% First names are abbreviated in the running head.
-% If there are more than two authors, 'et al.' is used.
-%
-\institute{Princeton University, Princeton NJ 08544, USA \and
-    Springer Heidelberg, Tiergartenstr. 17, 69121 Heidelberg, Germany
-    \email{lncs@springer.com}\\
-    \url{http://www.springer.com/gp/computer-science/lncs} \and
-    ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany\\
-    \email{\{abc,lncs\}@uni-heidelberg.de}}
-%
-\maketitle              % typeset the header of the contribution
-%
-\begin{abstract}
-    The abstract should briefly summarize the contents of the paper in
-    150--250 words.
 
-    \keywords{First keyword  \and Second keyword \and Another keyword.}
-\end{abstract}
-%
-%
-%
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+
+\makeatletter							% Title
+\def\printtitle{%
+    {\centering \@title\par}}
+\makeatother
+
+\makeatletter							% Author
+\def\printauthor{%
+    {\centering \large \@author}}
+\makeatother
+
+% --------------------------------------------------------------------
+% Metadata (Change this)
+% --------------------------------------------------------------------
+\title{	\normalsize \textsc{Politechnika Wrocławska\\Wydział Elektroniki\\Informatyka Techniczna\\Zastosowanie Informatyki w Medycynie - Projekt} 	% Subtitle
+		 	\\[2.0cm]								% 2cm spacing
+			\HRule{0.5pt} \\						% Upper rule
+			\LARGE \textbf{\uppercase{Komputerowe wspomaganie diagnozowania zawałów z wykorzystaniem algorytmu kNN}}	% Title
+			\HRule{2pt} \\ [0.5cm]		% Lower rule + 0.5cm spacing
+			\normalsize \textsc{Prowadzący: Dr inż. Paweł Ksieniewicz}
+		}
+
+\author{
+		Karolina Działek 242 040\\
+		Damian Koper 241 292\\
+}
+
+
+
+\begin{document}
+% ------------------------------------------------------------------------------
+% Maketitle
+% ------------------------------------------------------------------------------
+\thispagestyle{empty}		% Remove page numbering on this page
+
+\printtitle					% Print the title data as defined above
+  	\vfill
+\printauthor				% Print the author data as defined above
+\newpage
+% ------------------------------------------------------------------------------
+% Begin document
+% ------------------------------------------------------------------------------
+\setcounter{page}{1}		% Set page numbering to begin on this page
+\section{Wprowadzenie}
+Cel projektu stanowi stworzenie programu do komputerowego wspomagania diagnozowania zawałów z wykorzystaniem algorytmu kNN. Dane wejściowe to pięć plików tekstowych, przy czym każdy z nich odpowiada osobnej klasie. Zbiór danych zawiera 5 klas, 59 cech oraz 901 rekordów. Wykorzystywanym językiem programowania jest Python, ponieważ wykorzystywaną biblioteką do uczenia maszynowego jest scikit-learn.
+
+\section{Przedstawienie problemu medycznego jako zadania klasyfikacji}
+W klasyfikacji nadzorowanej wzorce posiadają pewne składowe, które są istotne, aby prawidłowo przeprowadzić ten proces.
+
+\begin{itemize}
+\item Klasa – wzorzec jest przyporządkowany do pewnej klasy (uczenie nadzorowane). Problem klasyfikacji jest odpowiedzią na pytania do jakiej klasy przyporządkować nowo napotkany obiekt. Z punktu widzenia medycznego jest to zakwalifikowanie pacjenta jako zdrowego lub chorego.
+
+\item Cecha – właściwość, która opisuje dany wzorzec. W medycynie jest to płeć, wiek, czy też wynik badań.
+\end{itemize}
+
+Zadanie klasyfikacji w projekcie polega na tym, aby wspomóc rozpoznawanie stanów zwałowych wśród pacjentów na podstawie danych zgromadzonych podczas badań na ludziach, u których potwierdzono jedną z następujących diagnoz:
+
+\begin{itemize}
+\item ból nie pochodzący z serca,
+\item dusznica bolesna – dławica piersiowa,
+\item dusznica Prinzmetala – dławica naczynioskurczowa,
+\item pełnościenny zawał serca,
+\item podwsierdziowy zawał serca.
+\end{itemize}
+
+Wynik zadania klasyfikacji to przyporządkowanie każdego z pacjentów do jednej z wymienionych klas. Jakość klasyfikacji zostanie zbadana za pomocą algorytmu k najbliższych sąsiadów, w zależności od liczby cech uwzględnionych podczas uczenia, a także zastosowanej metryki odległości.
+
 \input{parts/10-problem}
 %
 % ---- Bibliography ----
