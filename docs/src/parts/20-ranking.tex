@@ -1,0 +1,41 @@
+\section{Wprowadzenie}
+Za pomocą rankingu cech można wyróżnić najważniejsze cechy ze zbioru wszystkich cech. Jest to konieczne do przeprowadzenia procesu diagnozy. Aby wyznaczyć wspomniany ranking wykorzystano metodę SelectKBest, która znajduje się w bibliotece scikit-learn. Podana metoda przyjmuje dwa parametry: funkcję liczącą i parametr definiujący liczbę cech. Zastosowana funkcja licząca to \emph {f-classif}, która oblicza wartość ANOVA, czyli wartość analizy wariancji, dla dostarczonej próbki w celu porównania rozproszenia zmiennej zależnej w badanych grupach wyodrębnionych ze względu na wartości zmiennych niezależnych.
+
+%tu input z tabelą z rankingiem cech
+
+\section{Algorytm k-NN}
+Algorytm k-Najblizszych Sąsiadów stanowi jedną z najbardziej prostych metod klasyfikacji. Jest łatwy w implementacji w swojej podstawowej formie oraz wykonuje dość złożone zadania klasyfikacyjne. k-NN to przykład klasyfikatora leniwego, czyli takiego, który wyciąga wnioski dopiero przy procedurze predykcji bazując na wiedzy o danych zebranej podczas procesu uczenia. W następnych etapach swojego działania omawiany algorytm wyszukuje k najbliższych wzorców ze zbioru uczącego, oblicza do nich odległość za pomocą metryki, jako predykcję zwraca tę klasę, która występuje częściej w obrębie lokalnego sąsiedztwa. Przyjmuje się, że k powinno być liczbą nieparzystą, żeby uniknąć remisu w przypadku problemów binarnych, niemniej jednak nie ma żadnej liczby, która byłaby najlepsza.
+
+ \begin{algorithm}[!ht]
+ \label{algorytm}
+\SetKwInOut{Input}{Input}
+\Input{$X$ = zestaw uczący\\$L$ = etykiety klas zestawu \\ $x_{q}$ = niesklasyfikowana próbka \\ $k$ = liczba sąsiadów }
+\BlankLine
+\SetAlgoVlined
+\For{$(x', l')$ \in $X$}{
+Oblicz odległość d($x'$, $x_{q}$)}
+
+Posortuj rosnąco obliczone odległości elementów zestawu uczącego $X$ od $x_{q}$ \\
+Policz wystąpienia każdej z klas w $L$ pośród najbliższych $k$ sąsiadów $x_{q}$ \\
+Przydziel $x_{q}$ do najczęściej występującej klasy
+\caption{K Nearest Neighbours}
+\end{algorithm}
+
+\subsection{Miary odległości}
+Istotnym elementem algorytmu k-NN jest odległość, na podstawie której wyznacza się najbliższych sąsiadów. Wybrano dwie  metryki, które zostaną wykorzystane w projekcie.
+Pierwsza metryka to odległość euklidesowa. Stanowi jedną na najczęściej wykorzystywanych metryk, za jej pomocą można obliczyć odległość między dwoma punktami (x, y) na płaszczyźnie.
+
+\begin{center}
+\begin{math}
+ d_{e}\left( x,y\right)   = \sqrt {\sum _{i=1}^{n}  \left( x_{i}-y_{i}\right)^2 }
+\end{math}
+\end{center}
+
+Drugą wybraną metryką jest manhattan, którą oblicza się stosując poniższy wzór.
+
+\begin{center}
+\begin{math}
+ d_{m}\left( x,y\right)   = \sum_{i=1}^n |x_i-y_i|
+\end{math}
+\end{center}
+
