@@ -1,0 +1,16 @@
+\subsection{Algorytm selekcji cech według rankingu}
+Za pomocą rankingu cech można wyróżnić najważniejsze cechy ze zbioru wszystkich cech. Jest to konieczne do przeprowadzenia procesu diagnozy. Aby wyznaczyć wspomniany ranking wykorzystano metodę SelectKBest, która znajduje się w bibliotece scikit-learn. Podana metoda przyjmuje dwa parametry: funkcję liczącą i parametr definiujący liczbę cech. Zastosowana funkcja licząca to \emph {f-classif}, która oblicza wartość ANOVA, czyli wartość analizy wariancji, dla dostarczonej próbki w celu porównania rozproszenia zmiennej zależnej w badanych grupach wyodrębnionych ze względu na wartości zmiennych niezależnych.
+
+% Karolina tutaj opisz dokładniej SelectKBest i ANOVA
+
+% z overleafa -> Przedstawienie wybranego algorytmu selekcji cech. Opis słowny + wzory oraz literatura.
+
+% nie zapomnij podlinkować w bibliografii literaturki 
+
+Porównanie wszystkich cech wraz z wartością funkcji wyniku dla metody ANOVA widoczne jest na wykresie na rysunku \ref{fig:by_score}.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{./img/by_score.png}
+    \caption{Ranking cech na podstawie metody ANOVA} \label{fig:by_score}
+\end{figure}
+

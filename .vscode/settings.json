@@ -1,7 +1,8 @@
 {
-  "python.pythonPath": "/home/damian_koper/.virtualenvs/myocardial-infarction-knn-YsotzBlM/bin/python",
+  "python.pythonPath": "/home/damian_koper/.local/share/virtualenvs/myocardial-infarction-knn-YsotzBlM/bin/python",
   "spellright.language": ["en_US", "pl_PL"],
   "spellright.documentTypes": ["markdown", "plaintext", "latex"],
   "latex-workshop.latex.outDir": "../out",
-  "editor.wordWrap": "wordWrapColumn"
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.rulers": [80, 120]
 }
