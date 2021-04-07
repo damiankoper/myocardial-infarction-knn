@@ -1,11 +1,15 @@
 \subsection{Algorytm selekcji cech według rankingu}
-Za pomocą rankingu cech można wyróżnić najważniejsze cechy ze zbioru wszystkich cech. Jest to konieczne do przeprowadzenia procesu diagnozy. Aby wyznaczyć wspomniany ranking wykorzystano metodę SelectKBest, która znajduje się w bibliotece scikit-learn. Podana metoda przyjmuje dwa parametry: funkcję liczącą i parametr definiujący liczbę cech. Zastosowana funkcja licząca to \emph {f-classif}, która oblicza wartość ANOVA, czyli wartość analizy wariancji, dla dostarczonej próbki w celu porównania rozproszenia zmiennej zależnej w badanych grupach wyodrębnionych ze względu na wartości zmiennych niezależnych.
+Za pomocą rankingu cech można wyróżnić najważniejsze cechy ze zbioru wszystkich cech. Jest to konieczne do przeprowadzenia procesu diagnozy. Aby wyznaczyć wspomniany ranking wykorzystano metodę SelectKBest, która znajduje się w bibliotece scikit-learn. Podana metoda przyjmuje dwa parametry: funkcję liczącą i parametr definiujący liczbę cech. Zastosowana funkcja licząca to \emph {f-classif} (pobiera 2 tablice X i Y), która oblicza wartość ANOVA, czyli wartość analizy wariancji, dla dostarczonej próbki w celu porównania rozproszenia zmiennej zależnej w badanych grupach wyodrębnionych ze względu na wartości zmiennych niezależnych.
 
-% Karolina tutaj opisz dokładniej SelectKBest i ANOVA
+Analiza wariancji ANOVA stanowi popularną oraz często stosowaną analizę statystyczną. Można podzielić analizę wariancji na 3 grupy:
 
-% z overleafa -> Przedstawienie wybranego algorytmu selekcji cech. Opis słowny + wzory oraz literatura.
+\begin{itemize}
+    \item jednoczynnikowa analiza wariancji,
+    \item wieloczynnikowa analiza wariancji,
+    \item analiza wariancji dla czynników wewnątrzgrupowych.
+\end{itemize}
 
-% nie zapomnij podlinkować w bibliografii literaturki 
+Zdarza się także, że łączy się różne rodzaje: międzygrupową (jedno lub wieloczynnikową) z wewnątrzgrupową, co nazywa się mianem analizy wariancji w schemacie mieszanym. Ideę analizy wariancji stanowi sprawdzenie, czy pewne zmienne niezależne wpływają na poziom zmiennej zależnej (testowanej).
 
 Porównanie wszystkich cech wraz z wartością funkcji wyniku dla metody ANOVA widoczne jest na wykresie na rysunku \ref{fig:by_score}.
 
