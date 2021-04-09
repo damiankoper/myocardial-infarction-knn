@@ -155,6 +155,34 @@ plt.ylim(-1, data_columns_scores_sorted.name.shape[0])
 fig.tight_layout()
 fig.savefig(join(OUT_IMG_DIR, 'by_score.png'))
 
+# ANOVA ręcznie dla zabawy
+""" i = 1  # analizowana cecha
+anova_classes = [data_mi[i], data_mi_np[i],
+                 data_others[i], data_ang_prect[i], data_ang_prect_2[i]]
+y_mean = data_all[i].mean()
+
+ss_factor = 0
+
+for cl in anova_classes:
+    cl_mean = cl.mean()
+    n_i = cl.shape[0]
+    ss_factor += n_i*((cl_mean - y_mean)**2)
+ss_factor /= len(anova_classes) - 1
+
+ss_error = 0
+df = 0
+for cl in anova_classes:
+    cl_mean = cl.mean()
+    n_i = cl.shape[0]
+    df += n_i-1
+    for value in cl:
+        ss_error += (value - cl_mean)**2
+
+ss_error /= df
+
+print(ss_factor/ss_error) # Wynik """
+
+
 """ # kNN test
 X = [[0], [1], [2], [3]]
 y = [0, 0, 1, 1]

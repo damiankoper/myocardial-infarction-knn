@@ -1,17 +1,33 @@
+\clearpage
 \subsection{Algorytm selekcji cech według rankingu}
-Za pomocą rankingu cech można wyróżnić najważniejsze cechy ze zbioru wszystkich cech. Jest to konieczne do przeprowadzenia procesu diagnozy. Aby wyznaczyć wspomniany ranking wykorzystano metodę SelectKBest, która znajduje się w bibliotece scikit-learn. Podana metoda przyjmuje dwa parametry: funkcję liczącą i parametr definiujący liczbę cech. Zastosowana funkcja licząca to \emph {f-classif} (pobiera 2 tablice X i Y), która oblicza wartość ANOVA, czyli wartość analizy wariancji, dla dostarczonej próbki w celu porównania rozproszenia zmiennej zależnej w badanych grupach wyodrębnionych ze względu na wartości zmiennych niezależnych.
-
-Analiza wariancji ANOVA stanowi popularną oraz często stosowaną analizę statystyczną. Można podzielić analizę wariancji na 3 grupy:
+Za pomocą rankingu cech można wyróżnić najważniejsze cechy ze zbioru wszystkich cech. Jest to konieczne do przeprowadzenia procesu klasyfikacji. Aby wyznaczyć wspomniany ranking wykorzystano metodę ANOVA\cite{anova} - analizę wariancji. ANOVA stanowi popularną oraz często stosowaną analizę statystyczną służącą do porównania wpływu zmiennej na wartość analizowanej funkcji. Można podzielić analizę wariancji na 3 grupy:
 
 \begin{itemize}
-    \item jednoczynnikowa analiza wariancji,
-    \item wieloczynnikowa analiza wariancji,
+    \item jednoczynnikowa - wpływ każdego czynnika analizowany jest oddzielnie,
+    \item wieloczynnikowa - wpływy czynników analizowane są razem,
     \item analiza wariancji dla czynników wewnątrzgrupowych.
 \end{itemize}
 
-Zdarza się także, że łączy się różne rodzaje: międzygrupową (jedno lub wieloczynnikową) z wewnątrzgrupową, co nazywa się mianem analizy wariancji w schemacie mieszanym. Ideę analizy wariancji stanowi sprawdzenie, czy pewne zmienne niezależne wpływają na poziom zmiennej zależnej (testowanej).
+Zdarza się także, że łączy się różne rodzaje: międzygrupową (jedno lub wieloczynnikową) z wewnątrzgrupową, co nazywa się mianem analizy wariancji w~schemacie mieszanym. Ideę analizy wariancji stanowi sprawdzenie, czy pewne zmienne niezależne wpływają na poziom zmiennej zależnej (testowanej).
 
-Porównanie wszystkich cech wraz z wartością funkcji wyniku dla metody ANOVA widoczne jest na wykresie na rysunku \ref{fig:by_score}.
+W celu porównania wariancji dla analizowanych cech wykorzystano jednoczynnikową analizę wariancji. Porównanie wszystkich cech wraz z wartością statystyki $F$ dla metody ANOVA widoczne jest na wykresie na rysunku \ref{fig:by_score}. Działania matematyczne niezbędne do obliczenia statystyki $F$ przedstawia równanie \ref{eq:anova}.
+
+\begin{align}\label{eq:anova}
+    \begin{split}
+        F              & = \frac{MSTR}{MSE}                                                         \\
+        MSTR           & = \frac{1}{r-1} \sum_{i=1}^r n_i(\overline{x_i}-\overline{x})^2            \\
+        MSE            & = \frac{1}{n-r} \sum_{i=1}^r \sum_{j=1}^{n_i} n_i(x_{ij}-\overline{x_i})^2 \\
+        \text{gdzie:}                                                                               \\
+        n_i            & - \text{liczba pomiarów $i$-klasy}                                         \\
+        \overline{x_i} & - \text{średnia arytmetyczna wartości pomiarów $i$-klasy}                  \\
+        \overline{x}   & - \text{średnia arytmetyczna wartości pomiarów wszystkich klas}            \\
+        x_{ij}   & - \text{wartości pomiaru $j$ klasy $i$}            \\
+        r              & - \text{liczba klas}
+    \end{split}
+\end{align}
+
+W~dalszej analizie brano pod uwagę $k$ cech, dla których metoda analizy wariancji zwróciła najwyższy wynik, gdzie parametr $k$ był analizowany pod kątem liczby cech dających najlepsze rezultaty.
+
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{./img/by_score.png}
