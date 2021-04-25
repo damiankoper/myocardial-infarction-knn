@@ -1,7 +1,15 @@
-\setlength{\tabcolsep}{5pt}
-\tabulinesep=2.5pt
-\LTcapwidth=\textwidth
-
+\begin{table}[h]
+    \caption{Rozkład cech dla poszczególnych klas.}\label{tab:apriori}
+    \begin{tabu}{lXX}
+        \toprule
+        \textbf{Diagnoza} & \textbf{Liczba przypadków} & \textbf{Procent wszystkich diagnoz} \\
+        \midrule
+        \csvreader[no head,  late after line= \\]{data/class_distribution.csv}{2=\name,3=\one,4=\two}
+        { \name           & \one\                      & \two\% }
+        \bottomrule
+    \end{tabu}
+\end{table}
+\clearpage
 \begin{longtabu}{rX[l]ll}
     \caption{Opis zbioru cech danych uczących i treningowych klasyfikatora.}\label{tab:cechy}                                \\
     \toprule
@@ -36,10 +44,10 @@
     13            & zawroty głowy/omdlenia                                & dychotomiczny        & 0 - brak, 1 - obecny      \\
     14            & odbijanie                                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
     \midrule
-    & \multicolumn{3}{l}{\textit{Czynniki paliatywne}}                                                         \\*
+    & \multicolumn{3}{l}{\textit{Czynniki paliatywne}} \\
     \cmidrule(r){2-4}
     15            & czynniki paliatywne                                   & kategoryczny         & tabela \ref{tab:cecha_15} \\
-    \midrule \pagebreak
+    \midrule
     & \multicolumn{3}{l}{\textit{Historia podobnego bólu}}                                                     \\
     \cmidrule(r){2-4}\nopagebreak  16            & wcześniejszy, tego samego rodzaju w~klatce piersiowej & dychotomiczny        & 0 - brak, 1 - obecny      \\
     17            & konsultacja lekarska przy wcześniejszym bólu          & dychotomiczny        & 0 - brak, 1 - obecny      \\
@@ -47,7 +55,7 @@
     19            & wcześniejszy, spowodowany zawałem                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
     20            & wcześniejszy, spowodowany chorobą niedokrwienną serca & dychotomiczny        & 0 - brak, 1 - obecny      \\
     \midrule
-    & \multicolumn{3}{l}{\textit{Historia medyczna}}                                                           \\*
+    & \multicolumn{3}{l}{\textit{Historia medyczna}}                                                           \\
     \cmidrule(r){2-4}
     21            & wcześniejszy zawał serca                              & dychotomiczny        & 0 - brak, 1 - obecny      \\
     22            & wcześniejsza choroba niedokrwienna serca              & dychotomiczny        & 0 - brak, 1 - obecny      \\
@@ -59,7 +67,7 @@
     28            & cukrzyca                                              & dychotomiczny        & 0 - brak, 1 - obecny      \\
     29            & palacz                                                & dychotomiczny        & 0 - brak, 1 - obecny      \\
     \midrule
-    & \multicolumn{3}{l}{\textit{Obecne użycie leków}}                                                         \\*
+    & \multicolumn{3}{l}{\textit{Obecne użycie leków}}                                                         \\
     \cmidrule(r){2-4}
     30            & diuretyki                                             & dychotomiczny        & 0 - brak, 1 - obecny      \\
     31            & azotany                                               & dychotomiczny        & 0 - brak, 1 - obecny      \\
@@ -68,8 +76,8 @@
     34            & niesteroidowe leki przeciwzapalne                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
     35            & leki zobojętniające kwas żołądkowy, blokery~H2        & dychotomiczny        & 0 - brak, 1 - obecny      \\
     \midrule
-    \pagebreak
-    & \multicolumn{3}{l}{\textit{Badanie fizyczne}}                                                            \\*
+
+    & \multicolumn{3}{l}{\textit{Badanie fizyczne}}                                                            \\
     \cmidrule(r){2-4}
     36            & skurczowe ciśnienie tętnicze                          & dyskretny            & liczby naturalne          \\
     37            & rozkurczowe ciśnienie tętnicze                        & dyskretny            & liczby naturalne          \\
@@ -86,7 +94,7 @@
     48            & tkliwość ściany klatki piersiowej                     & dychotomiczny        & 0 - brak, 1 - obecny      \\
     49            & potliwość                                             & 0 - brak, 1 - obecny                             \\
     \midrule
-    & \multicolumn{3}{l}{\textit{Badanie EKG}}                                                                 \\*
+    & \multicolumn{3}{l}{\textit{Badanie EKG}}                                                                 \\
     \cmidrule(r){2-4}
     50            & nowy załamek Q                                        & dychotomiczny        & 0 - brak, 1 - obecny      \\
     51            & jakikolwiek załamek~Q                                 & dychotomiczny        & 0 - brak, 1 - obecny      \\
@@ -202,4 +210,3 @@
         \bottomrule
     \end{tabu}
 \end{table}
-

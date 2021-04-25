@@ -5,6 +5,10 @@ import numpy as np
 import os
 from os.path import join
 import pandas as pd
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import RepeatedKFold
+from sklearn.neighbors import DistanceMetric
+import matplotlib.ticker as mtick
 os.chdir(os.path.dirname(__file__))
 
 # OPISYWANKO
@@ -112,6 +116,21 @@ data_all = pd.concat([
     data_mi, data_mi_np, data_others, data_ang_prect, data_ang_prect_2
 ])
 
+count = data_all.shape[0]
+pd.DataFrame([
+    ['Pełnościenny zawał serca', data_mi.shape[0], "%.2f" %
+        (data_mi.shape[0] / count * 100)],
+    ['Podwsierdziowy zawał serca', data_mi_np.shape[0],  "%.2f" %
+        (data_mi_np.shape[0] / count * 100)],
+    ['Dusznica bolesna – dławica piersiowa', data_ang_prect.shape[0], "%.2f" %
+        (data_ang_prect.shape[0] / count * 100)],
+    ['Dusznica Prinzmetala – dławica naczynioskurczowa', data_ang_prect_2.shape[0], "%.2f" %
+        (data_ang_prect_2.shape[0] / count * 100)],
+    ['Ból niepochodzący z serca', data_others.shape[0], "%.2f" %
+        (data_others.shape[0] / count * 100)],
+]).to_csv(join(OUT_DATA_DIR, 'class_distribution.csv'), header=None)
+
+
 data_classes = pd.concat([
     pd.Series([4]).repeat(data_mi.shape[0]),
     pd.Series([5]).repeat(data_mi_np.shape[0]),
@@ -122,7 +141,7 @@ data_classes = pd.concat([
 ])
 
 # RANKINGOWANIE
-K = 6
+K = 30
 kBest = SelectKBest(f_classif, k=K).fit(data_all, data_classes)
 data_columns_score = pd.concat(
     [pd.DataFrame(data_columns), pd.DataFrame(kBest.scores_)], axis=1)
@@ -138,7 +157,7 @@ rects = ax.barh(
     data_columns_scores_sorted.score,
 )
 
-ax.set_title(f'Ranking based on ANOVA')
+ax.set_title(f'Ranking oparty o metodę ANOVA')
 ax.grid(axis='x')
 
 for i, rect in enumerate(rects):
@@ -181,6 +200,70 @@ for cl in anova_classes:
 ss_error /= df
 
 print(ss_factor/ss_error) # Wynik """
+
+rkf = RepeatedKFold(n_splits=2, n_repeats=5, random_state=2137)
+metrics = {
+    'euclidean': 'euklidesową',
+    'manhattan': 'Manhattan',
+    'chebyshev': 'Czebyszewa',
+}
+for metric in ['euclidean', 'manhattan', 'chebyshev']:  # , 'manhattan', 'chebyshev'
+    fig, ax = plt.subplots()
+    fig.set_figheight(10)
+    fig.set_figwidth(16)
+    fig.tight_layout(pad=3)
+
+    ax.set_title('kNN z metryką %s' % metrics[metric])
+    ax.grid()
+    ax.yaxis.set_major_formatter(mtick.PercentFormatter())
+    ax.xaxis.get_major_locator().set_params(integer=True)
+    ax.set_ylabel('Accuracy')
+    ax.set_xlabel('Liczba cech')
+
+    legends = []
+    for N in [3, 5, 8]:  # , 5, 8
+        k_scores = []
+        k_stdevs = []
+        legends.append('%i-NN' % N)
+        for K in range(1, data_all.shape[1]):  #
+            scores = []
+
+            kBest.set_params(k=K)
+            data_k_best = kBest.transform(data_all)
+            for train_index, test_index in rkf.split(data_k_best):
+                X_train = data_k_best[train_index]
+                X_test = data_k_best[test_index]
+
+                y_train = data_classes.iloc[train_index]
+                y_test = data_classes.iloc[test_index]
+
+                neigh = KNeighborsClassifier(
+                    n_neighbors=N, metric=metric)
+                neigh.fit(X_train, y_train)
+
+                predict = neigh.predict(X_test)
+
+                scores.append(accuracy_score(y_test, predict))
+
+            mean_score = np.mean(scores)
+            std_score = np.std(scores)
+
+            k_scores.append(mean_score)
+            k_stdevs.append(std_score)
+            # print("Score: %.3f (%.3f)" % (mean_score, std_score))
+
+        x_ticks = np.arange(1, len(k_scores)+1)
+        ax.set_xticks(x_ticks)
+        print('metric %s, n %f, max %f' % (metric, N, max(k_scores)))
+        ax.errorbar(x_ticks,
+                    list(map(lambda x: x*100, k_scores)),
+                    yerr=list(map(lambda x: x*100, k_stdevs)),
+                    fmt='--o', capsize=2
+                    )
+
+    ax.legend(legends, loc='lower right')
+
+    fig.savefig(join(OUT_IMG_DIR, 'plot_%s.png' % metric))
 
 
 """ # kNN test

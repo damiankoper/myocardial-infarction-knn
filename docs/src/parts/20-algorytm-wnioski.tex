@@ -1,5 +1,3 @@
-\section{Algorytm klasyfikacji}
-
 \section{Algorytm k-NN}
 Algorytm k-Najbliższych Sąsiadów stanowi jedną z najbardziej prostych metod klasyfikacji. Jest łatwy w implementacji w swojej podstawowej formie oraz wykonuje dość złożone zadania klasyfikacyjne. k-NN to przykład klasyfikatora leniwego, czyli takiego, który wyciąga wnioski dopiero przy procedurze predykcji bazując na wiedzy o danych zebranej podczas procesu uczenia. W następnych etapach swojego działania omawiany algorytm wyszukuje k najbliższych wzorców ze zbioru uczącego, oblicza do nich odległość za pomocą metryki, jako predykcję zwraca tę klasę, która występuje częściej w obrębie lokalnego sąsiedztwa. Przyjmuje się, że k powinno być liczbą nieparzystą, żeby uniknąć remisu w przypadku problemów binarnych, niemniej jednak nie ma żadnej liczby, która byłaby najlepsza.
 
@@ -20,25 +18,68 @@ Algorytm k-Najbliższych Sąsiadów stanowi jedną z najbardziej prostych metod 
 
 \subsection{Miary odległości}
 Istotnym elementem algorytmu k-NN jest odległość, na podstawie której wyznacza się najbliższych sąsiadów. Wybrano dwie  metryki, które zostaną wykorzystane w projekcie.
-Pierwsza metryka to odległość euklidesowa. Stanowi jedną na najczęściej wykorzystywanych metryk, za jej pomocą można obliczyć odległość między dwoma punktami (x, y) na płaszczyźnie.
+Pierwsza metryka to odległość euklidesowa. Stanowi jedną na najczęściej wykorzystywanych metryk, za jej pomocą można obliczyć odległość między dwoma punktami (x, y) na płaszczyźnie (wzór \ref{eq:e}).
 
 \begin{center}
-    \begin{math}
+    \begin{equation}
+        \label{eq:e}
         d_{e}\left( x,y\right)   = \sqrt {\sum _{i=1}^{n}  \left( x_{i}-y_{i}\right)^2 }
-    \end{math}
+    \end{equation}
 \end{center}
-
-Drugą wybraną metryką jest Manhattan, którą oblicza się stosując poniższy wzór.
+\noindent
+Drugą metryką jest Manhattan, którą oblicza się stosując wzór \ref{eq:m}.
 
 \begin{center}
-    \begin{math}
+    \begin{equation}
+        \label{eq:m}
         d_{m}\left( x,y\right)   = \sum_{i=1}^n |x_i-y_i|
-    \end{math}
+    \end{equation}
 \end{center}
 
+\noindent
+Trzecią metryką jest metryka Czebyszewa, którą oblicza się stosując wzór \ref{eq:ch}.
+
+\begin{center}
+    \begin{equation}
+        \label{eq:ch}
+        d_{ch}\left( x,y\right)   = \max_{i} |x_i-y_i|
+    \end{equation}
+\end{center}
 
 
 \subsection{Implementacja środowiska eksperymentowania}
-Wykorzystywanym językiem programowania jest Python, ponieważ wykorzystywaną biblioteką do uczenia maszynowego jest scikit-learn\cite{scikit}.
+Do zaimplementowania środowiska eksperymentowania wykorzystano język Python, ponieważ wykorzystywaną biblioteką do uczenia maszynowego jest scikit-learn\cite{scikit}.
 
-\section{Wyniki ewaluacji eksperymentalnej oraz testów statystycznych}
+\section{Wyniki ewaluacji eksperymentalnej}
+Walidacja została dokonana z użyciem 5 razy powtórzonej 2-krotnej walidacji krzyżowej, a jakość klasyfikacji mierzona metryką dokładności (\textit{accuracy}).
+Wyniki pokazane zostały na rysunkach \ref{fig:euclidean}, \ref{fig:manhattan} i \ref{fig:chebyshev} dla każdej z metryk odległości.
+
+\subsection{Wnioski}
+Wyniki eksperymentów uwidaczniają jak zmienia się dokładność klasyfikacji na podstawie liczby cech, liczby sąsiadów branych pod uwagę w tym procesie oraz metryk odległości.
+
+Dla metryki euklidesowej maksymalna dokładność 65,68\% osiągana jest dla 5 sąsiadów i 34 cech. Dokładność ta wzrasta do poziomu 60-65\% dla liczby cech od 13 do 35, a potem maleje schodkowo.
+
+Dla metryki Manhattan maksymalna dokładność 72,16\% osiągana jest dla 8 sąsiadów i 47 cech. Dokładność ta wzrasta do poziomu ok. 70\% dla liczby cech od 13 i utrzymuje się na stałym poziomie niezależnie od dalszego przyrostu liczby cech.
+
+Dla metryki Czebyszewa maksymalna dokładność 59,08\% osiągana jest dla 3 sąsiadów i 16 cech. Dokładność ta wzrasta do poziomu 60-65\% dla liczby cech od 13 do 35, a potem maleje schodkowo. Z uwagi na charakterystykę tej metryki dokładność nie podlega żadnym wahaniom w określonych przedziałach. Z uwagi na charakterystykę zestawu danych uczących dla liczby cech od 6 do 8 występuje spadek dokładności.
+
+Metryką pozwalającą osiągnąć największą dokładność klasyfikacji jest metryka Manhattan.
+
+\begin{landscape}
+
+    \begin{figure}[h]
+        \includegraphics[width=\linewidth]{./img/plot_euclidean.png}
+        \caption{Wyniki ewaluacji eksperymentalnej dla metryki euklidesowej} \label{fig:euclidean}
+    \end{figure}
+
+    \begin{figure}[h]
+        \includegraphics[width=\linewidth]{./img/plot_manhattan.png}
+        \caption{Wyniki ewaluacji eksperymentalnej dla metryki Manhattan} \label{fig:manhattan}
+    \end{figure}
+
+    \begin{figure}[h]
+        \includegraphics[width=\linewidth]{./img/plot_chebyshev.png}
+        \caption{Wyniki ewaluacji eksperymentalnej dla metryki Czebyszewa} \label{fig:chebyshev}
+    \end{figure}
+
+\end{landscape}

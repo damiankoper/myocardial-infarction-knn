@@ -30,6 +30,8 @@
 \usepackage{comment}
 \setlength{\columnsep}{1cm}
 \usepackage{wrapfig}
+\usepackage{lscape}
+
 \renewcommand*{\andname}{i}
 \renewcommand*{\figurename}{Rysunek}
 \renewcommand*{\keywordname}{{\bf Słowa kluczowe:}}
@@ -39,6 +41,9 @@
 \begin{document}
 
 
+\setlength{\tabcolsep}{5pt}
+\tabulinesep=2.5pt
+\LTcapwidth=\textwidth
 
 \title{Komputerowe wspomaganie diagnozowania zawałów z wykorzystaniem algorytmu kNN}
 \titlerunning{Komputerowe wspomaganie diagnozowania zawałów}
@@ -70,7 +75,7 @@
 %
 
 \input{parts/10-problem}
-%\input{parts/20-algorytm-wnioski}
+\input{parts/20-algorytm-wnioski}
 \clearpage
 %
 % ---- Bibliography ----
