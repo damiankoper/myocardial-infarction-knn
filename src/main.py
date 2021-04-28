@@ -217,6 +217,7 @@ for metric in ['euclidean', 'manhattan', 'chebyshev']:  # , 'manhattan', 'chebys
     ax.grid()
     ax.yaxis.set_major_formatter(mtick.PercentFormatter())
     ax.xaxis.get_major_locator().set_params(integer=True)
+    ax.set_ylim(top=75)
     ax.set_ylabel('Accuracy')
     ax.set_xlabel('Liczba cech')
 
